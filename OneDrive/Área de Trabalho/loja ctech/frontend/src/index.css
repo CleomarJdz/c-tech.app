@@ -1,0 +1,194 @@
+:root {
+  --ctech-blue: #0f63ff; 
+  --ctech-blue-700: #0b4fd6;
+  --ice-white: #f4fbff; 
+  --ice-bg: #eef8ff; 
+  --card-bg: #ffffff;
+  --card-border: rgba(15,99,255,0.08);
+  --text-dark: #205f96;
+  --button-bg: #eaf6ff;
+  --button-bg-hover: #d6f0ff;
+  --button-foreground: #ffffff;
+  --qr-bg: #ffffff;
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--text-dark);
+  background-color: var(--ice-white);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+a {
+  font-weight: 500;
+  color: var(--ctech-blue);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--ctech-blue-700);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--ice-white);
+  color: var(--text-dark);
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Header layout and controls */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background: var(--ctech-blue-700);
+  color: #fff;
+  z-index: 40;
+}
+.header-left { display: flex; gap: 16px; align-items: center; }
+.header-right { display: flex; gap: 12px; align-items: center; }
+.brand img { height: 40px; }
+.main-nav .nav-link { color: #fff; text-decoration: none; font-weight: 600; }
+.hamburger { background: transparent; border: none; color: #fff; cursor: pointer; padding: 8px; border-radius: 6px; }
+.hamburger:hover { background: rgba(255,255,255,0.04); }
+.theme-toggle { background: transparent; border: none; color: #fff; cursor: pointer; padding: 6px; border-radius: 6px; }
+.theme-toggle:hover { background: rgba(255,255,255,0.04); }
+.link-button { background: transparent; color: #fff; border: none; cursor: pointer; font-weight: 600; padding: 6px 8px; }
+.cart-link { color: #fff; text-decoration: none; }
+
+/* Side menu (simple popover from hamburger) */
+.side-menu {
+  position: fixed;
+  top: 64px;
+  left: 12px;
+  background: var(--card-bg);
+  color: var(--text-dark);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 8px 24px rgba(2,6,23,0.12);
+  z-index: 60;
+}
+.side-menu ul { list-style: none; margin: 0; padding: 0; }
+.side-menu li { padding: 8px 6px; }
+.side-menu a { color: var(--text-dark); text-decoration: none; font-weight: 600; }
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: inherit;
+  background-color: var(--button-bg);
+  color: var(--ctech-blue-700);
+  cursor: pointer;
+  transition: transform 120ms, box-shadow 120ms, background-color 180ms;
+}
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(11,79,214,0.08);
+  background-color: var(--button-bg-hover);
+}
+button:focus,
+button:focus-visible {
+  outline: 3px solid rgba(15,99,255,0.12);
+  outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--text-dark);
+    background-color: var(--ice-white);
+  }
+  a:hover {
+    color: var(--ctech-blue-700);
+  }
+  button {
+    background-color: var(--button-bg);
+  }
+}
+
+/* Dark theme overrides when document element has data-theme="dark" */
+html[data-theme="dark"] {
+  --ctech-blue: #7fb3ff;
+  --ctech-blue-700: #4d8fe6;
+  --ice-white: #081824; /* page background */
+  --ice-bg: #071827;
+  --card-bg: #0b2233;
+  --card-border: rgba(127,179,255,0.08);
+  --text-dark: #cfe8ff;
+  --button-bg: rgba(127,179,255,0.08);
+  --button-bg-hover: rgba(127,179,255,0.12);
+  --button-foreground: #ffffff;
+  --qr-bg: #ffffff;
+  color: var(--text-dark);
+  background-color: var(--ice-white);
+}
+
+/* Smooth transition when switching themes */
+body, header, .site-footer, .card, .modal {
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Footer styles */
+.site-footer {
+  margin-top: 32px;
+  padding: 18px 12px;
+  text-align: center;
+  color: var(--text-dark);
+  background: transparent;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* center children horizontally */
+  align-items: center; /* center children vertically */
+  left: 0;
+}
+.site-footer .footer-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.site-footer svg { width: 20px; height: 20px; }
+
+/* Gradient title used on pages like Produtos */
+.gradient-title {
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, var(--ctech-blue), var(--ctech-blue-700));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.gradient-title.fallback {
+  /* fallback for browsers that don't support background-clip:text */
+  color: var(--ctech-blue);
+}
+
